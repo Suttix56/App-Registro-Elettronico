@@ -11,8 +11,14 @@ public class Studente extends Persona{
 
     private Classe classe;
 
-    public Studente(String nome, String congome, Date dataDiNascita, String CF) {
+    public Studente(String nome, String congome, Date dataDiNascita, String CF, Classe classe) {
         super(nome, congome, dataDiNascita, CF);
+
+        this.classe = classe;
+
+        this.voti = new ArrayList<>();
+        this.note = new ArrayList<>();
+        this.assenze = new ArrayList<>();
     }
 
     public ArrayList<Voto> getVoti() {
