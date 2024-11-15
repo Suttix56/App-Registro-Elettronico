@@ -3,6 +3,7 @@ package Controllore;
 import Altro.Classe;
 import Utenti.Docente;
 import Utenti.Genitore;
+import Utenti.Persona;
 import Utenti.Studente;
 
 import java.util.ArrayList;
@@ -21,7 +22,17 @@ public class Controllore {
     public Genitore creaGenitore(String nome, String cognome, Date dataDiNascita, String CF, Studente studente) {
         return new Genitore(nome, cognome, dataDiNascita, CF, studente);
     }
-    public void register() {
+    public void registrazione(Persona persona) {
+        if(persona instanceof Studente) {
 
+        } else if(persona instanceof Genitore) {
+
+        } else {
+
+        }
+    }
+
+    public void login() {
+        
     }
 }
