@@ -1,16 +1,18 @@
 package Utenti;
 
+import Credenziali.Credenziali;
+
 import java.util.Date;
 
 public class Persona {
-    private String nome;
-    private String congome;
+    private final String nome;
+    private final String congome;
 
-    private Date dataDiNascita;
+    private final Date dataDiNascita;
 
-    private String CF;
+    private final String CF;
 
-    //ToDo -> mettere le credenziali.
+   private Credenziali credenziali;
 
 
     public Persona(String nome, String congome, Date dataDiNascita, String CF) {
@@ -35,4 +37,14 @@ public class Persona {
     public String getCF() {
         return CF;
     }
+
+    public Credenziali getCredenziali() {
+        return credenziali;
+    }
+
+    public void setCredenziali(Credenziali credenziali) {
+        this.credenziali = credenziali;
+    }
+
+
 }

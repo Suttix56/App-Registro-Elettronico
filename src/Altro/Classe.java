@@ -1,15 +1,14 @@
 package Altro;
 
 import Utenti.Studente;
-
 import java.util.ArrayList;
 
 public class Classe {
-    private int anno;
-    private String indirizzo;
-    private char sezione;
+    private final int anno;
+    private final String indirizzo;
+    private final char sezione;
 
-    private ArrayList<Studente> studneti;
+    private ArrayList<Studente> studenti;
 
     public Classe(int anno, String indirizzo, char sezione) {
         this.anno = anno;
@@ -29,7 +28,7 @@ public class Classe {
         return sezione;
     }
 
-    public ArrayList<Studente> getStudneti() {
-        return studneti;
+    public ArrayList<Studente> getStudenti() {
+        return studenti;
     }
 }
