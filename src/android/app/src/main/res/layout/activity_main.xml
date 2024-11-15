@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:background="#000000">
+
+    <TextView
+            android:id="@+id/labelRegistroElettronico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro Elettronico"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp" />
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+        <Button
+                android:id="@+id/buttonProfessore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Docente"
+                android:textStyle="bold"
+                android:backgroundTint="#5E0303"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp" />
+
+        <Button
+                android:id="@+id/buttonStudente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Studente"
+                android:textStyle="bold"
+                android:backgroundTint="#5E0303"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp" />
+
+        <Button
+                android:id="@+id/buttonGenitore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genitore"
+                android:textStyle="bold"
+                android:backgroundTint="#5E0303"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</RelativeLayout>
