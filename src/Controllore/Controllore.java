@@ -5,24 +5,22 @@ import Utenti.*;
 
 import Credenziali.Credenziali;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 public class Controllore {
-    private File fileStudenti;
+    /*private File fileStudenti;
     private File fileDocenti;
-    private File fileGenitori;
+    private File fileGenitori;*/
 
     public Controllore(){
-        try{
+        /*try{
             fileStudenti = new File("studenti.bin");
             fileStudenti.createNewFile();
             fileDocenti = new File("docenti.bin");
             fileDocenti.createNewFile();
             fileGenitori = new File("genitori.bin");
             fileGenitori.createNewFile();
-        }catch(IOException ignore){}
+        }catch(IOException ignore){}*/
     }
 
     // ---- INIZIO CREAZIONE UTENTI ----//
@@ -41,23 +39,31 @@ public class Controllore {
 
     // ---- INIZIO MODIFCA UTENTI ---- //
     public void modificaStudente(Studente studente_temp, Studente studente) {
-
+        studente.setNome(studente_temp.getNome());
+        studente.setCognome(studente_temp.getCognome());
+        studente.setCF(studente_temp.getCF());
+        studente.setDataDiNascita(studente_temp.getDataDiNascita());
+        studente.setCredenziali(studente_temp.getCredenziali());
     }
 
     public void modificaDocente(Docente docente_temp, Docente docente) {
-
+        docente.setNome(docente_temp.getNome());
+        docente.setCognome(docente_temp.getCognome());
+        docente.setCF(docente_temp.getCF());
+        docente.setDataDiNascita(docente_temp.getDataDiNascita());
+        docente.setCredenziali(docente_temp.getCredenziali());
     }
 
     public void modificaGenitore(Genitore genitore_temp, Genitore genitore) {
-
+        genitore.setNome(genitore_temp.getNome());
+        genitore.setCognome(genitore_temp.getCognome());
+        genitore.setCF(genitore_temp.getCF());
+        genitore.setDataDiNascita(genitore_temp.getDataDiNascita());
+        genitore.setCredenziali(genitore_temp.getCredenziali());
     }
     // ---- FINE MODIFCA UTENTI ---- //
-    
-    public void login(Credenziali credenziali) {
 
-    }
-
-    //REGISTRAZIONE
+    // --- REGISTRAZIONE --- //
     public void registrazione(Persona persona, Credenziali credenziali) {
         if(persona instanceof Studente) {
             Studente s = (Studente) persona;
@@ -69,6 +75,10 @@ public class Controllore {
             Docente d = (Docente) persona;
             d.setCredenziali(credenziali);
         }
-        //vanno messi nel file
+    }
+    // --- FINE REGISTRAZIONE --- //
+    
+    public void login(Credenziali credenziali) {
+
     }
 }

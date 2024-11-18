@@ -5,19 +5,19 @@ import Credenziali.Credenziali;
 import java.util.Date;
 
 public class Persona {
-    private final String nome;
-    private final String congome;
+    private String nome;
+    private String cognome;
 
-    private final Date dataDiNascita;
+    private Date dataDiNascita;
 
-    private final String CF;
+    private String CF;
 
    private Credenziali credenziali;
 
 
     public Persona(String nome, String congome, Date dataDiNascita, String CF) {
         this.nome = nome;
-        this.congome = congome;
+        this.cognome = congome;
         this.dataDiNascita = dataDiNascita;
         this.CF = CF;
     }
@@ -26,8 +26,8 @@ public class Persona {
         return nome;
     }
 
-    public String getCongome() {
-        return congome;
+    public String getCognome() {
+        return cognome;
     }
 
     public Date getDataDiNascita() {
@@ -42,9 +42,23 @@ public class Persona {
         return credenziali;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public void setDataDiNascita(Date dataDiNascita) {
+        this.dataDiNascita = dataDiNascita;
+    }
+
+    public void setCF(String CF) {
+        this.CF = CF;
+    }
+
     public void setCredenziali(Credenziali credenziali) {
         this.credenziali = credenziali;
     }
-
-
 }
