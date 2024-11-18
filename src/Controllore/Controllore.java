@@ -25,7 +25,7 @@ public class Controllore {
         }catch(IOException ignore){}
     }
 
-    //LOGIN
+    // ---- INIZIO CREAZIONE UTENTI ----//
     public Studente creaStudente(String nome, String cognome, Date dataDiNascita, String CF, Classe classe) {
         return new Studente(nome, cognome, dataDiNascita, CF, classe);
     }
@@ -37,7 +37,22 @@ public class Controllore {
     public Genitore creaGenitore(String nome, String cognome, Date dataDiNascita, String CF, Studente studente) {
         return new Genitore(nome, cognome, dataDiNascita, CF, studente);
     }
+    // ---- FINE CREAZIONE UTENTI ---- //
 
+    // ---- INIZIO MODIFCA UTENTI ---- //
+    public void modificaStudente(Studente studente_temp, Studente studente) {
+
+    }
+
+    public void modificaDocente(Docente docente_temp, Docente docente) {
+
+    }
+
+    public void modificaGenitore(Genitore genitore_temp, Genitore genitore) {
+
+    }
+    // ---- FINE MODIFCA UTENTI ---- //
+    
     public void login(Credenziali credenziali) {
 
     }
