@@ -8,20 +8,6 @@ import Credenziali.Credenziali;
 import java.util.*;
 
 public class Controllore {
-    /*private File fileStudenti;
-    private File fileDocenti;
-    private File fileGenitori;*/
-
-    public Controllore(){
-        /*try{
-            fileStudenti = new File("studenti.bin");
-            fileStudenti.createNewFile();
-            fileDocenti = new File("docenti.bin");
-            fileDocenti.createNewFile();
-            fileGenitori = new File("genitori.bin");
-            fileGenitori.createNewFile();
-        }catch(IOException ignore){}*/
-    }
 
     // ---- INIZIO CREAZIONE UTENTI ----//
     public Studente creaStudente(String nome, String cognome, Date dataDiNascita, String CF, Classe classe) {
