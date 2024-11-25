@@ -29,7 +29,7 @@
         <activity android:name=".logStudenteActivity" />
         <activity android:name=".docenteActivity" />
         <activity android:name=".genitoreActivity" />
-        <activity android:name=".studenteActivity" />
+        <activity android:name=".loginActivity" />
 
 
     </application>

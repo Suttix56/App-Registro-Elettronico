@@ -1,16 +1,19 @@
 package com.example.registro;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class docenteActivity extends AppCompatActivity {
+public class DocenteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pagina_iniziale_docente);
-        TextView titolo= findViewById(R.id.labelRegistroElettronico);
+        setContentView(R.layout.activity_docente);
+
+        Button accedi= findViewById(R.id.accedi);
 
     }
 }

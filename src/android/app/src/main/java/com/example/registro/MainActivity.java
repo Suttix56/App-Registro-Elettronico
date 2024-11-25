@@ -15,34 +15,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView titolo= findViewById(R.id.labelRegistroElettronico);
-        TextView titolo1= findViewById(R.id.labelRegistroElettronico);
 
+        Button button = findViewById(R.id.buttonStudente);
 
-        Button buttonDocente = findViewById(R.id.buttonProfessore);
-        Button buttonGenitore = findViewById(R.id.buttonGenitore);
-        Button buttonStudente = findViewById(R.id.buttonStudente);
-
-
-        buttonDocente.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this, logDocenteActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonGenitore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this, logGenitoreActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonStudente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this, logStudenteActivity.class);
+                Intent intent= new Intent(MainActivity.this, loginActivity.class);
                 startActivity(intent);
             }
         });
