@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView titolo= findViewById(R.id.labelRegistroElettronico);
+        TextView titolo1= findViewById(R.id.labelRegistroElettronico);
+
 
         Button buttonDocente = findViewById(R.id.buttonProfessore);
         Button buttonGenitore = findViewById(R.id.buttonGenitore);
