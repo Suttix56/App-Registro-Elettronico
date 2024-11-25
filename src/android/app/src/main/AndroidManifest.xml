@@ -23,14 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".logDocenteActivity" />
-        <activity android:name=".logGenitoreActivity" />
-        <activity android:name=".logStudenteActivity" />
+        <activity android:name=".studenteActivity" />
         <activity android:name=".docenteActivity" />
         <activity android:name=".genitoreActivity" />
-        <activity android:name=".loginActivity" />
-
 
     </application>
 

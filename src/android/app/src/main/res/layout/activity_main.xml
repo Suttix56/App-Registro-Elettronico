@@ -67,6 +67,16 @@
                 android:textColorHint="#AAAAAA"
                 android:gravity="center"
         />
+        <TextView
+                android:id="@+id/errorMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L'username o la password sono errati"
+                android:textColor="#801212"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/Password"
+                android:layout_marginStart="16dp"/>
 
         <Button
                 android:layout_width="250dp"

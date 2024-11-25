@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-    id("com.google.gms.google-services") version "4.4.2" apply false
     id("com.google.gms.google-services")
 }
 
@@ -34,7 +33,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
@@ -46,5 +44,4 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
 }
-
 
