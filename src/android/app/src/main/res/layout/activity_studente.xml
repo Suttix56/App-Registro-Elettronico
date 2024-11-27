@@ -20,26 +20,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="4dp" app:layout_constraintHorizontal_bias="0.0"/>
+
+
     <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/VotiLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/rounded_background"
             app:layout_constraintTop_toBottomOf="@id/labelRegistroElettronico"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp">
-
-        <TextView
-                android:id="@+id/valutazioni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Valutazioni"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:layout_gravity="center"
-                android:layout_marginEnd="16dp" />
+            android:layout_marginTop="8dp" app:layout_constraintHorizontal_bias="0.0">
 
         <RelativeLayout
                 android:id="@+id/cerchio_verde"
@@ -70,6 +63,62 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="50dp"/>
         </RelativeLayout>
+
+        <TextView
+                android:id="@+id/valutazioni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Valutazioni"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="16dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/noteLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/rounded_background"
+            app:layout_constraintTop_toBottomOf="@id/VotiLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+    <TextView
+            android:id="@+id/note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Note"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_margin="16dp" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/assenzeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/rounded_background"
+            app:layout_constraintTop_toBottomOf="@id/noteLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+        <TextView
+                android:id="@+id/assenze"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assenze"
+                android:textSize="30sp"
+                android:textStyle="bold"
+
+                android:textColor="#FFFFFF"
+                android:layout_margin="16dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,11 +126,75 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@drawable/rounded_background"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/VotiLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp">
+    >
+        <Button
+                android:id="@+id/backButtonMaterie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Indietro"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone" />
+
+        <TextView
+                android:id="@+id/titoloValutazioni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Valutazioni"
+                android:textSize="30sp"
+                android:visibility="visible"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="16dp" />
+
     </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/votiLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_background"
+            android:visibility="gone"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/VotiLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+    >
+        <Button
+                android:id="@+id/backButtonVoti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Indietro"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone" />
+
+        <TextView
+                android:id="@+id/titoloMateria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="30sp"
+                android:visibility="visible"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="16dp" />
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
