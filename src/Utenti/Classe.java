@@ -1,6 +1,5 @@
-package Altro;
+package Utenti;
 
-import Utenti.Studente;
 import java.util.ArrayList;
 
 public class Classe {
@@ -8,12 +7,13 @@ public class Classe {
     private final String indirizzo;
     private final char sezione;
 
-    private ArrayList<Studente> studenti;
+    private final ArrayList<Studente> studenti;
 
     public Classe(int anno, String indirizzo, char sezione) {
         this.anno = anno;
         this.indirizzo = indirizzo;
         this.sezione = sezione;
+        studenti = new ArrayList<>();
     }
 
     public int getAnno() {
@@ -30,5 +30,13 @@ public class Classe {
 
     public ArrayList<Studente> getStudenti() {
         return studenti;
+    }
+
+    public double getMediaClasse(){
+        double media = 0;
+        for (Studente s: studenti) {
+            media += s.getMedia();
+        }
+        return media/studenti.size();
     }
 }

@@ -1,6 +1,6 @@
 package Controllore;
 
-import Altro.Classe;
+import Utenti.Classe;
 import Utenti.*;
 
 import Credenziali.Credenziali;

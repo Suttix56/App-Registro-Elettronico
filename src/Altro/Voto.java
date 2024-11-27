@@ -13,7 +13,7 @@ public class Voto {
         this.docente = docente;
     }
 
-    public double getVoto() {
+    public double getValore() {
         return voto;
     }
 

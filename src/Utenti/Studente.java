@@ -36,4 +36,12 @@ public class Studente extends Persona{
     public Classe getClasse() {
         return classe;
     }
+
+    public double getMedia(){
+        double media = 0;
+        for (Voto v: voti) {
+            media += v.getValore();
+        }
+        return media/voti.size();
+    }
 }

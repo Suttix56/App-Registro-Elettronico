@@ -1,5 +1,4 @@
 package Utenti;
-import Altro.*;
 
 import java.util.*;
 
