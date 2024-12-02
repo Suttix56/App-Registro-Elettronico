@@ -1,11 +1,10 @@
 package gui;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class UsersFrame extends JFrame {
-    public UsersFrame() {
-        super("Utenti");
+public class GraficiFrame extends JFrame {
+    public GraficiFrame(){
+        super("Grafici");
         this.setUndecorated(true);
         this.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
     }

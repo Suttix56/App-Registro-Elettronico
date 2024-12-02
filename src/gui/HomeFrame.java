@@ -1,83 +1,137 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Objects;
 
-public class HomeFrame {
+public class HomeFrame extends JFrame {
+    public HomeFrame() {
+        int width, height, b_height, b_width;
 
-    public static void main(String[] args) {
-        // Crea la schermata principale
-        JFrame frame = new JFrame("Registro Elettronico");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(MAXIMIZED_BOTH);
+        setResizable(false);
+        setUndecorated(true); //--> toglie la barra in alto
+        setVisible(true);
 
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);  //ToDo -> Serve per aprire la finestra a schermo intero.
-        frame.setResizable(false);
+        Container container = this.getContentPane();
 
-        // Crea il pannello principale
-        frame.setLayout(new BorderLayout());
+        Dimension screenSize = getSize();
+        width = (int) screenSize.getWidth();
+        height = (int) screenSize.getHeight();
 
-        // Crea il titolo "Registro Elettronico"
-        JLabel titleLabel = new JLabel("Registro Elettronico", JLabel.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 50));
-        frame.add(titleLabel, BorderLayout.NORTH);
+        b_height = height/12;
+        b_width = width/9;
 
-        // Crea il pannello principale con GridBagLayout per centrare i bottoni
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridBagLayout()); //ToDo -> E' un gridLayout più "personalizzabile". Crea un layout per centrare i bottoni.
-        GridBagConstraints gbc = new GridBagConstraints();  //ToDO -> GridBagConstraints consente di personalizzare la posizione e la dimensione dei componenti (in una griglia) in modo più preciso.
-        gbc.gridx = 0; // Colonna 0
-        gbc.gridy = 0; // Riga 0
-        gbc.insets = new Insets(10, 10, 10, 10); // Spaziatura tra i bottoni
+        JPanel sfondoPanel = new JPanel();
 
-        // Crea i bottoni
-        JButton studentButton = new JButton("Studente");
-        JButton teacherButton = new JButton("Docente");
-        JButton parentButton = new JButton("Genitore");
+        //SFONDO ROSSO------------------------------------------------------------------------------------
+        ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/red.jpg")));
+        Image sfondo = icon.getImage().getScaledInstance(width,height,Image.SCALE_SMOOTH);
+        icon = new ImageIcon(sfondo);
+        JLabel sfondoLabel = new JLabel(icon);
+        sfondoPanel.add(sfondoLabel);
+        //SFONDO ROSSO------------------------------------------------------------------------------------
 
-        // Rimpicciolisci i bottoni (imposta le dimensioni preferite)
-        studentButton.setPreferredSize(new Dimension(150, 40));
-        teacherButton.setPreferredSize(new Dimension(150, 40));
-        parentButton.setPreferredSize(new Dimension(150, 40));
+        //TITOLO----------------------------------------------------
+        JPanel titlePanel = new JPanel(new GridLayout(1,1));
+        titlePanel.setBounds(width/6,height/4,width*2/3,height/5);
+        titlePanel.setOpaque(false);
+        sfondoLabel.add(titlePanel);
+        titlePanel.setBackground(Color.white);
 
-        // Aggiungi ActionListener ai bottoni per gestire il clic
-        studentButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "Ruolo selezionato: Studente");
-            }
-        });
+        JLabel titoloLabel = new JLabel("REGISTRO ELETTRONICO");
+        titoloLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+        titoloLabel.setFont(TitleFont.getFont((float) width/20));
 
-        teacherButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "Ruolo selezionato: Docente");
-            }
-        });
+        titoloLabel.setForeground(Color.white);
+        titlePanel.add(titoloLabel);
+        //TITOLO-----------------------------------------------------
 
-        parentButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "Ruolo selezionato: Genitore");
-            }
-        });
+        //PANEL PULSANTI---------------------------------------------
+        JPanel utentiPanel = new JPanel(new GridLayout(1,1));
+        JPanel graficiPanel = new JPanel(new GridLayout(1,1));
+        sfondoLabel.add(utentiPanel);
+        sfondoLabel.add(graficiPanel);
 
-        // Posizionamento dei bottoni al centro (riga 1, colonna 0, colonna 1, colonna 2)
-        gbc.gridy = 1; // Riga 1
-        gbc.gridwidth = 1; // Ogni bottone occupa una colonna
-        panel.add(studentButton, gbc);
+        utentiPanel.setBounds(width/2 - 275,height/2+50,b_width*3,b_height);
+        utentiPanel.setOpaque(false);
 
-        gbc.gridy = 2; // Riga 2
-        panel.add(teacherButton, gbc);
+        graficiPanel.setBounds(width/2 - 175,height*2/3+100,b_width*2,b_height);
+        graficiPanel.setOpaque(false);
+        //PANEL PULSANTI----------------------------------------------
 
-        gbc.gridy = 3; // Riga 3
-        panel.add(parentButton, gbc);
+        //PANEL TITOLI--------------------------------------
+        JPanel gestioneUtenti = new JPanel(new GridLayout(1,1));
+        gestioneUtenti.setBounds(width/2 - 90,height/2-50,b_width*3,b_height);
+        gestioneUtenti.setOpaque(false);
+        JPanel gestioneGrafici = new JPanel(new GridLayout(1,1));
+        gestioneGrafici.setBounds(width/2 - 50,height/2+200,b_width*3,b_height);
+        gestioneGrafici.setOpaque(false);
 
-        // Aggiungi il pannello principale alla finestra
-        frame.add(panel);
+        sfondoLabel.add(gestioneUtenti);
+        sfondoLabel.add(gestioneGrafici);
 
-        // Imposta la visibilità della finestra
-        frame.setVisible(true);
+        JLabel utentiLabel = new JLabel("GESTIONE UTENTI");
+        utentiLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+        utentiLabel.setFont(TitleFont.getFont((float) width/65));
+        utentiLabel.setForeground(Color.white);
+
+        JLabel graficiLabel = new JLabel("GRAFICI");
+        graficiLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+        graficiLabel.setFont(TitleFont.getFont((float) width/65));
+        graficiLabel.setForeground(Color.white);
+
+        gestioneUtenti.add(utentiLabel);
+        gestioneGrafici.add(graficiLabel);
+        //PANEL TITOLI--------------------------------------
+
+        //PULSANTI--------------------------------
+        JButton studente = new JButton("STUDENTI");
+        studente.setFont(TitleFont.getFont((float) width/68));
+        studente.setBorder(new EtchedBorder());
+        studente.setBackground(Color.WHITE);
+        studente.setForeground(Color.DARK_GRAY);
+
+        JButton docente = new JButton("DOCENTE");
+        docente.setFont(TitleFont.getFont((float) width/68));
+        docente.setBorder(new EtchedBorder());
+        docente.setBackground(Color.WHITE);
+        docente.setForeground(Color.DARK_GRAY);
+
+        JButton genitore = new JButton("GENITORE");
+        genitore.setFont(TitleFont.getFont((float) width/68));
+        genitore.setBorder(new EtchedBorder());
+        genitore.setBackground(Color.WHITE);
+        genitore.setForeground(Color.DARK_GRAY);
+
+        JButton graficiClassi = new JButton("CLASSI");
+        graficiClassi.setFont(TitleFont.getFont((float) width/68));
+        graficiClassi.setBorder(new EtchedBorder());
+        graficiClassi.setBackground(Color.WHITE);
+        graficiClassi.setForeground(Color.DARK_GRAY);
+
+        JButton graficiStudenti = new JButton("STUDENTI");
+        graficiStudenti.setFont(TitleFont.getFont((float) width/68));
+        graficiStudenti.setBorder(new EtchedBorder());
+        graficiStudenti.setBackground(Color.WHITE);
+        graficiStudenti.setForeground(Color.DARK_GRAY);
+        //PULSANTI------------------------------------
+
+
+        //AGGIUNTA PULSANTI AI PANEL-------------
+        utentiPanel.add(studente);
+        utentiPanel.add(docente);
+        utentiPanel.add(genitore);
+
+        graficiPanel.add(graficiStudenti);
+        graficiPanel.add(graficiClassi);
+
+        container.add(sfondoPanel);
+        //AGGIUNTA PULSANTI AI PANEL-------------
+
+        revalidate();
+        repaint();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }
