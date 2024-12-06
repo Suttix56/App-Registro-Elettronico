@@ -95,12 +95,9 @@ public class HomeFrame extends JFrame {
         studente.setBackground(Color.WHITE);
         studente.setForeground(Color.DARK_GRAY);
 
-        studente.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new StudentiFrame();
-                dispose();
-            }
+        studente.addActionListener(e -> {
+            new StudentiFrame();
+            dispose();
         });
         JButton docente = new JButton("DOCENTE");
         docente.setFont(TitleFont.getFont((float) width/68));
@@ -108,23 +105,43 @@ public class HomeFrame extends JFrame {
         docente.setBackground(Color.WHITE);
         docente.setForeground(Color.DARK_GRAY);
 
+        studente.addActionListener(e -> {
+            new DocentiFrame();
+            dispose();
+        });
+
         JButton genitore = new JButton("GENITORE");
         genitore.setFont(TitleFont.getFont((float) width/68));
         genitore.setBorder(new EtchedBorder());
         genitore.setBackground(Color.WHITE);
         genitore.setForeground(Color.DARK_GRAY);
 
+
+        studente.addActionListener(e -> {
+            new GenitoriFrame();
+            dispose();
+        });
+
         JButton graficiClassi = new JButton("CLASSI");
         graficiClassi.setFont(TitleFont.getFont((float) width/68));
         graficiClassi.setBorder(new EtchedBorder());
         graficiClassi.setBackground(Color.WHITE);
         graficiClassi.setForeground(Color.DARK_GRAY);
+        studente.addActionListener(e -> {
+            new GraficiClassiFrame();
+            dispose();
+        });
 
         JButton graficiStudenti = new JButton("STUDENTI");
         graficiStudenti.setFont(TitleFont.getFont((float) width/68));
         graficiStudenti.setBorder(new EtchedBorder());
         graficiStudenti.setBackground(Color.WHITE);
         graficiStudenti.setForeground(Color.DARK_GRAY);
+
+        studente.addActionListener(e -> {
+            new GraficiStudentiFrame();
+            dispose();
+        });
         //PULSANTI------------------------------------
 
 
