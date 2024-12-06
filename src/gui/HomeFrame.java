@@ -92,6 +92,8 @@ public class HomeFrame extends JFrame {
         studente.setBorder(new EtchedBorder());
         studente.setBackground(Color.WHITE);
         studente.setForeground(Color.DARK_GRAY);
+        
+        s
 
         JButton docente = new JButton("DOCENTE");
         docente.setFont(TitleFont.getFont((float) width/68));
