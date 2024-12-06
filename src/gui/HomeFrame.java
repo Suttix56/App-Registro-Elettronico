@@ -94,6 +94,8 @@ public class HomeFrame extends JFrame {
         studente.setBorder(new EtchedBorder());
         studente.setBackground(Color.WHITE);
         studente.setForeground(Color.DARK_GRAY);
+        
+        s
 
         studente.addActionListener(e -> {
             new StudentiFrame();
