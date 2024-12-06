@@ -3,6 +3,8 @@ package gui;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class HomeFrame extends JFrame {
@@ -93,6 +95,13 @@ public class HomeFrame extends JFrame {
         studente.setBackground(Color.WHITE);
         studente.setForeground(Color.DARK_GRAY);
 
+        studente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new StudentiFrame();
+                dispose();
+            }
+        });
         JButton docente = new JButton("DOCENTE");
         docente.setFont(TitleFont.getFont((float) width/68));
         docente.setBorder(new EtchedBorder());
