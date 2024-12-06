@@ -106,7 +106,7 @@ public class HomeFrame extends JFrame {
         docente.setBackground(Color.WHITE);
         docente.setForeground(Color.DARK_GRAY);
 
-        studente.addActionListener(e -> {
+        docente.addActionListener(e -> {
             new DocentiFrame();
             dispose();
         });
@@ -118,7 +118,7 @@ public class HomeFrame extends JFrame {
         genitore.setForeground(Color.DARK_GRAY);
 
 
-        studente.addActionListener(e -> {
+        genitore.addActionListener(e -> {
             new GenitoriFrame();
             dispose();
         });
@@ -128,7 +128,8 @@ public class HomeFrame extends JFrame {
         graficiClassi.setBorder(new EtchedBorder());
         graficiClassi.setBackground(Color.WHITE);
         graficiClassi.setForeground(Color.DARK_GRAY);
-        studente.addActionListener(e -> {
+
+        graficiClassi.addActionListener(e -> {
             new GraficiClassiFrame();
             dispose();
         });
@@ -139,7 +140,7 @@ public class HomeFrame extends JFrame {
         graficiStudenti.setBackground(Color.WHITE);
         graficiStudenti.setForeground(Color.DARK_GRAY);
 
-        studente.addActionListener(e -> {
+        graficiStudenti.addActionListener(e -> {
             new GraficiStudentiFrame();
             dispose();
         });
