@@ -33,6 +33,25 @@ public class GenitoriFrame extends JFrame {
         sfondoPanel.add(sfondoLabel);
         //SFONDO ROSSO------------------------------------------------------------------------------------
 
+        //HOME--------------------------------------------------------
+        JPanel homePanel = new JPanel(new GridLayout(1,1));
+        sfondoLabel.add(homePanel);
+        homePanel.setBounds(0,0,b_height,b_height);
+        homePanel.setOpaque(false);
+
+        PulsanteHome homeButton = new PulsanteHome(b_height);
+        homeButton.setFont(TitleFont.getFont((float) width/68));
+        homeButton.setBorder(new EtchedBorder());
+        homeButton.setBackground(Color.WHITE);
+        homeButton.setForeground(Color.DARK_GRAY);
+        homePanel.add(homeButton);
+
+        homeButton.addActionListener(e->{
+            new HomeFrame();
+            dispose();
+        });
+        //HOME--------------------------------------------------------
+
         //TITOLO----------------------------------------------------
         JPanel titlePanel = new JPanel(new GridLayout(1,1));
         titlePanel.setBounds(width/6,height/4,width*2/3,height/5);
