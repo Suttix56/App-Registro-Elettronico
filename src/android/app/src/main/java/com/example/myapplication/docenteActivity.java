@@ -1,4 +1,4 @@
-package com.example.registro;
+package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,6 @@ public class docenteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_docente);
 
-        Button accedi= findViewById(R.id.accedi);
 
     }
 }

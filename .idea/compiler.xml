@@ -2,7 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="App-Registro-Elettronico.app" target="21" />
       <module name="applicazione_android.app" target="21" />
+      <module name="registro.app" target="21" />
       <module name="RegistroElettronico.app" target="21" />
     </bytecodeTargetLevel>
   </component>
