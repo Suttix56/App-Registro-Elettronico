@@ -11,5 +11,8 @@ public class PulsanteHome extends JButton {
         imageIcon = new ImageIcon(newImage);
         setIcon(imageIcon);
         setIconTextGap(0);
+        setOpaque(false);
+        setContentAreaFilled(false);
+        setBorderPainted(false);
     }
 }
