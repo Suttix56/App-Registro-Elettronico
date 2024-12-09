@@ -74,6 +74,11 @@ public class StudentiFrame extends JFrame {
         crea.setBackground(Color.WHITE);
         crea.setForeground(Color.DARK_GRAY);
 
+        crea.addActionListener(e -> {
+            new CreaStudenti();
+            //dispose();
+        });
+
         JButton modifica = new JButton("MODIFICA");
         modifica.setFont(TitleFont.getFont((float) width/68));
         modifica.setBorder(new EtchedBorder());
