@@ -1,10 +1,13 @@
 package gui;
 
+import Utenti.Studente;
+
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -36,33 +39,69 @@ public class CreaStudenti extends JFrame {
         sfondoPanel.add(sfondoLabel);
         // SFONDO ROSSO------------------------------------------------------------------------------------
 
-        // PANEL FORM--------------------------------------
-        JPanel formPanel = new JPanel();
-        formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
-        formPanel.setBounds(width / 2 - 150, height / 3, 300, height / 3);
-        formPanel.setOpaque(false);
+        //HOME--------------------------------------------------------
+        JPanel homePanel = new JPanel(new GridLayout(1,1));
+        sfondoLabel.add(homePanel);
+        homePanel.setBounds(0,0,b_height,b_height);
+        homePanel.setOpaque(false);
 
-        // Creazione dei pannelli per etichetta e campo di testo
+        PulsanteHome homeButton = new PulsanteHome(b_height);
+        homeButton.setFont(CustomFont.getFont((float) width/68));
+        homeButton.setBorder(new EtchedBorder());
+        homeButton.setBackground(Color.WHITE);
+        homeButton.setForeground(Color.DARK_GRAY);
+        homePanel.add(homeButton);
+
+        homeButton.addActionListener(e->{
+            new HomeFrame();
+            dispose();
+        });
+        //HOME--------------------------------------------------------
+
+        //TITOLO----------------------------------------------------
+        JPanel titlePanel = new JPanel(new GridLayout(1,1));
+        titlePanel.setBounds(width/6,height/6,width*2/3,height/5);
+        titlePanel.setOpaque(false);
+        sfondoLabel.add(titlePanel);
+        titlePanel.setBackground(Color.white);
+
+        JLabel titoloLabel = new JLabel("CREA STUDENTE");
+        titoloLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+        titoloLabel.setFont(CustomFont.getFont((float) width/20));
+
+        titoloLabel.setForeground(Color.white);
+        titlePanel.add(titoloLabel);
+        //TITOLO-----------------------------------------------------
+
+
+        // PANEL FORM 1 --------------------------------------
+        JPanel formPanel1 = new JPanel();
+        formPanel1.setLayout(new BoxLayout(formPanel1, BoxLayout.Y_AXIS));
+        formPanel1.setBounds(width/5,height/3+50, width/3, height/3);
+        formPanel1.setOpaque(false);
+
+        // NOME
         JPanel nomePanel = new JPanel();
         nomePanel.setLayout(new BoxLayout(nomePanel, BoxLayout.X_AXIS));
         nomePanel.setOpaque(false);
         JLabel nomeLabel = new JLabel("Nome:");
-        nomeLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        nomeLabel.setFont(new Font("Arial", Font.BOLD, height/35));
         nomeLabel.setForeground(Color.WHITE);
         JTextField nomeField = new JTextField();
-        nomeField.setPreferredSize(new Dimension(200, 30));
+        nomeField.setPreferredSize(new Dimension(200, 15));
         nomePanel.add(nomeLabel);
         nomePanel.add(Box.createHorizontalStrut(10));  // Spazio tra etichetta e campo
         nomePanel.add(nomeField);
 
+        // COGNOME
         JPanel cognomePanel = new JPanel();
         cognomePanel.setLayout(new BoxLayout(cognomePanel, BoxLayout.X_AXIS));
         cognomePanel.setOpaque(false);
         JLabel cognomeLabel = new JLabel("Cognome:");
-        cognomeLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        cognomeLabel.setFont(new Font("Arial", Font.BOLD, height/35));
         cognomeLabel.setForeground(Color.WHITE);
         JTextField cognomeField = new JTextField();
-        cognomeField.setPreferredSize(new Dimension(200, 30));
+        cognomeField.setPreferredSize(new Dimension(200, 15));
         cognomePanel.add(cognomeLabel);
         cognomePanel.add(Box.createHorizontalStrut(10));
         cognomePanel.add(cognomeField);
@@ -72,7 +111,7 @@ public class CreaStudenti extends JFrame {
         dataNascitaPanel.setLayout(new BoxLayout(dataNascitaPanel, BoxLayout.X_AXIS));
         dataNascitaPanel.setOpaque(false);
         JLabel dataNascitaLabel = new JLabel("Data di Nascita:");
-        dataNascitaLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        dataNascitaLabel.setFont(new Font("Arial", Font.BOLD, height/35));
         dataNascitaLabel.setForeground(Color.WHITE);
 
         // ComboBox per i giorni
@@ -88,30 +127,27 @@ public class CreaStudenti extends JFrame {
             meseCombo.addItem(mese);
         }
 
-        // ComboBox per gli anni (da un range specifico, ad esempio dal 1900 al 2024)
+        // ComboBox per gli anni (dal 1900 al 2024)
         JComboBox<String> annoCombo = new JComboBox<>();
         for (int i = 1900; i <= 2024; i++) {
             annoCombo.addItem(String.valueOf(i));
         }
 
-        // Listener per aggiornare i giorni in base al mese e anno selezionati
-        ActionListener aggiornaGiorni = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int giorniMax = 31;
-                int meseSelezionato = meseCombo.getSelectedIndex(); // Ottieni l'indice del mese selezionato (0-based)
-                int anno = Integer.parseInt((String) annoCombo.getSelectedItem());
-                Calendar cal = Calendar.getInstance();
-                cal.set(anno, meseSelezionato, 1);
-                giorniMax = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        // Listener per aggiornare i giorni in base a mese e anno selezionati
+        ActionListener aggiornaGiorni = e -> {
+            int giorniMax = 31;
+            int meseSelezionato = meseCombo.getSelectedIndex(); // Ottieni l'indice del mese selezionato (0-based)
+            int anno = Integer.parseInt((String) annoCombo.getSelectedItem());
+            Calendar cal = Calendar.getInstance();
+            cal.set(anno, meseSelezionato, 1);
+            giorniMax = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
-                // Rimuovi tutti i giorni precedenti
-                giornoCombo.removeAllItems();
+            // Rimuovi tutti i giorni precedenti
+            giornoCombo.removeAllItems();
 
-                // Aggiungi i giorni per il mese selezionato
-                for (int i = 1; i <= giorniMax; i++) {
-                    giornoCombo.addItem(String.format("%02d", i));
-                }
+            // Aggiungi i giorni per il mese selezionato
+            for (int i = 1; i <= giorniMax; i++) {
+                giornoCombo.addItem(String.format("%02d", i));
             }
         };
 
@@ -119,35 +155,125 @@ public class CreaStudenti extends JFrame {
         meseCombo.addActionListener(aggiornaGiorni);
         annoCombo.addActionListener(aggiornaGiorni);
 
+        //label e combo nel panel separate da spazi
         dataNascitaPanel.add(dataNascitaLabel);
-        dataNascitaPanel.add(Box.createHorizontalStrut(10));  // Spazio tra etichetta e campi
+        dataNascitaPanel.add(Box.createHorizontalStrut(10));
         dataNascitaPanel.add(giornoCombo);
-        dataNascitaPanel.add(Box.createHorizontalStrut(10));  // Spazio tra combo
+        dataNascitaPanel.add(Box.createHorizontalStrut(10));
         dataNascitaPanel.add(meseCombo);
-        dataNascitaPanel.add(Box.createHorizontalStrut(10));  // Spazio tra combo
+        dataNascitaPanel.add(Box.createHorizontalStrut(10));
         dataNascitaPanel.add(annoCombo);
 
-
         // Aggiungi i pannelli di input al formPanel
-        formPanel.add(nomePanel);
-        formPanel.add(Box.createVerticalStrut(20));  // Spazio tra i campi
-        formPanel.add(cognomePanel);
-        formPanel.add(Box.createVerticalStrut(20));
-        formPanel.add(dataNascitaPanel);
+        formPanel1.add(nomePanel);
+        formPanel1.add(Box.createVerticalStrut(20));  // Spazio tra i campi
+        formPanel1.add(cognomePanel);
+        formPanel1.add(Box.createVerticalStrut(20));
+        formPanel1.add(dataNascitaPanel);
 
-        // Aggiungi il formPanel allo sfondo
-        sfondoLabel.add(formPanel);
+        //PANEL 2--------------------------------------------------------------
+        JPanel formPanel2 = new JPanel();
+        formPanel2.setLayout(new BoxLayout(formPanel2, BoxLayout.Y_AXIS));
+        formPanel2.setBounds(width*3/5,height/3+68, width/3, height/4);
+        formPanel2.setOpaque(false);
 
-        // AGGIUNTA PULSANTI AI PANEL-------------
-        JPanel utentiPanel = new JPanel(new GridLayout(1, 1));
-        utentiPanel.setBounds(width / 2 - 275, height / 2 + 50, b_width * 3, b_height);
-        utentiPanel.setOpaque(false);
+        //CODICE FISCALE
+        JPanel cfPanel = new JPanel();
+        cfPanel.setLayout(new BoxLayout(cfPanel, BoxLayout.X_AXIS));
+        cfPanel.setOpaque(false);
 
-        // Aggiungi il pannello di sfondo al container
+        JLabel cfLabel = new JLabel("Codice Fiscale:");
+        cfLabel.setFont(new Font("Arial", Font.BOLD, height/35));
+        cfLabel.setForeground(Color.WHITE);
+
+        JTextField cfField = new JTextField();
+        cfField.setPreferredSize(new Dimension(200, 15));
+
+        cfPanel.add(cfLabel);
+        cfPanel.add(Box.createHorizontalStrut(10));  // Spazio tra etichetta e campo
+        cfPanel.add(cfField);
+
+        //CLASSE
+        JPanel classPanel = new JPanel();
+        classPanel.setLayout(new BoxLayout(classPanel, BoxLayout.X_AXIS));
+        classPanel.setOpaque(false);
+
+        JLabel classLabel = new JLabel("Classe:");
+        classLabel.setFont(new Font("Arial", Font.BOLD, height/35));
+        classLabel.setForeground(Color.WHITE);
+
+        JTextField classField = new JTextField();
+        classField.setPreferredSize(new Dimension(200,15));
+
+        classPanel.add(classLabel);
+        classPanel.add(Box.createHorizontalStrut(10));
+        classPanel.add(classField);
+
+        //aggiunta al panel
+        formPanel2.add(cfPanel);
+        formPanel2.add(Box.createVerticalStrut(20));
+        formPanel2.add(classPanel);
+
+        //PULSANTE CONFERMA----------------------------------------------------------------------
+        JPanel confermaPanel = new JPanel();
+        confermaPanel.setLayout(new GridLayout(1,1));
+        confermaPanel.setOpaque(false);
+        confermaPanel.setBounds(width*3/4,height*4/5,b_width,b_height);
+
+        JButton conferma = new JButton("CONFERMA");
+        conferma.setFont(CustomFont.getFont((float) height /35));
+        conferma.setBorder(new EtchedBorder());
+        conferma.setBackground(new Color(189, 255, 136));
+        conferma.setForeground(Color.DARK_GRAY);
+
+        //listener x l'invio dello studente
+        conferma.addActionListener(e ->{
+            //nome e cognome
+            if(nomeField.getText().isEmpty() || cognomeField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Inserisci nome e cognome");
+            }
+            else if(classField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Inserire la classe");
+            }
+            else if(!checkCodiceFiscale(cfField.getText().trim())){
+                JOptionPane.showMessageDialog(null,"Codice Fiscale invalido");
+            }
+            else{
+                // CREA LO STUDENTEStudente studente = new Studente();
+                JOptionPane.showMessageDialog(null,":)");
+            }
+        });
+
+        confermaPanel.add(conferma);
+
+        // Aggiungi i Panel allo sfondo
+        sfondoLabel.add(formPanel1);
+        sfondoLabel.add(formPanel2);
+        sfondoLabel.add(confermaPanel);
         container.add(sfondoPanel);
 
         revalidate();
         repaint();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+
+    public boolean checkCodiceFiscale(String cf){
+        //lunghezza di 16
+        if(cf.length()!=16) return false;
+
+        //NUMERI
+        Integer[] in = new Integer[]{6,7,9,10,12,13,14};
+        for (Integer i: in) {
+            if(!Character.isDigit(cf.charAt(i))) return false;
+        }
+
+        //CARATTERI
+        in = new Integer[]{0,1,2,3,4,5,8,11,15};
+        for (Integer i: in) {
+            if(Character.isDigit(cf.charAt(i))) return false;
+        }
+
+        return true;
     }
 }

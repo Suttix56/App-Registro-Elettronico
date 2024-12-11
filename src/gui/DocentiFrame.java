@@ -40,7 +40,7 @@ public class DocentiFrame extends JFrame {
         homePanel.setOpaque(false);
 
         PulsanteHome homeButton = new PulsanteHome(b_height);
-        homeButton.setFont(TitleFont.getFont((float) width/68));
+        homeButton.setFont(CustomFont.getFont((float) width/68));
         homeButton.setBorder(new EtchedBorder());
         homeButton.setBackground(Color.WHITE);
         homeButton.setForeground(Color.DARK_GRAY);
@@ -61,7 +61,7 @@ public class DocentiFrame extends JFrame {
 
         JLabel titoloLabel = new JLabel("DOCENTI");
         titoloLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-        titoloLabel.setFont(TitleFont.getFont((float) width/20));
+        titoloLabel.setFont(CustomFont.getFont((float) width/20));
 
         titoloLabel.setForeground(Color.white);
         titlePanel.add(titoloLabel);
@@ -69,19 +69,19 @@ public class DocentiFrame extends JFrame {
 
         //PULSANTI------------------------------------------------------
         JButton crea = new JButton("CREA");
-        crea.setFont(TitleFont.getFont((float) width/68));
+        crea.setFont(CustomFont.getFont((float) width/68));
         crea.setBorder(new EtchedBorder());
         crea.setBackground(Color.WHITE);
         crea.setForeground(Color.DARK_GRAY);
 
         JButton modifica = new JButton("MODIFICA");
-        modifica.setFont(TitleFont.getFont((float) width/68));
+        modifica.setFont(CustomFont.getFont((float) width/68));
         modifica.setBorder(new EtchedBorder());
         modifica.setBackground(Color.WHITE);
         modifica.setForeground(Color.DARK_GRAY);
 
         JButton elimina = new JButton("ELIMINA");
-        elimina.setFont(TitleFont.getFont((float) width/68));
+        elimina.setFont(CustomFont.getFont((float) width/68));
         elimina.setBorder(new EtchedBorder());
         elimina.setBackground(Color.WHITE);
         elimina.setForeground(Color.DARK_GRAY);

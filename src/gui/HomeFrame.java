@@ -3,8 +3,6 @@ package gui;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class HomeFrame extends JFrame {
@@ -44,7 +42,7 @@ public class HomeFrame extends JFrame {
 
         JLabel titoloLabel = new JLabel("REGISTRO ELETTRONICO");
         titoloLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-        titoloLabel.setFont(TitleFont.getFont((float) width/20));
+        titoloLabel.setFont(CustomFont.getFont((float) width/20));
 
         titoloLabel.setForeground(Color.white);
         titlePanel.add(titoloLabel);
@@ -76,12 +74,12 @@ public class HomeFrame extends JFrame {
 
         JLabel utentiLabel = new JLabel("GESTIONE UTENTI");
         utentiLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-        utentiLabel.setFont(TitleFont.getFont((float) width/65));
+        utentiLabel.setFont(CustomFont.getFont((float) width/65));
         utentiLabel.setForeground(Color.white);
 
         JLabel graficiLabel = new JLabel("GRAFICI");
         graficiLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-        graficiLabel.setFont(TitleFont.getFont((float) width/65));
+        graficiLabel.setFont(CustomFont.getFont((float) width/65));
         graficiLabel.setForeground(Color.white);
 
         gestioneUtenti.add(utentiLabel);
@@ -90,7 +88,7 @@ public class HomeFrame extends JFrame {
 
         //PULSANTI--------------------------------
         JButton studente = new JButton("STUDENTI");
-        studente.setFont(TitleFont.getFont((float) width/68));
+        studente.setFont(CustomFont.getFont((float) width/68));
         studente.setBorder(new EtchedBorder());
         studente.setBackground(Color.WHITE);
         studente.setForeground(Color.DARK_GRAY);
@@ -101,7 +99,7 @@ public class HomeFrame extends JFrame {
             dispose();
         });
         JButton docente = new JButton("DOCENTE");
-        docente.setFont(TitleFont.getFont((float) width/68));
+        docente.setFont(CustomFont.getFont((float) width/68));
         docente.setBorder(new EtchedBorder());
         docente.setBackground(Color.WHITE);
         docente.setForeground(Color.DARK_GRAY);
@@ -112,7 +110,7 @@ public class HomeFrame extends JFrame {
         });
 
         JButton genitore = new JButton("GENITORE");
-        genitore.setFont(TitleFont.getFont((float) width/68));
+        genitore.setFont(CustomFont.getFont((float) width/68));
         genitore.setBorder(new EtchedBorder());
         genitore.setBackground(Color.WHITE);
         genitore.setForeground(Color.DARK_GRAY);
@@ -124,7 +122,7 @@ public class HomeFrame extends JFrame {
         });
 
         JButton graficiClassi = new JButton("CLASSI");
-        graficiClassi.setFont(TitleFont.getFont((float) width/68));
+        graficiClassi.setFont(CustomFont.getFont((float) width/68));
         graficiClassi.setBorder(new EtchedBorder());
         graficiClassi.setBackground(Color.WHITE);
         graficiClassi.setForeground(Color.DARK_GRAY);
@@ -135,7 +133,7 @@ public class HomeFrame extends JFrame {
         });
 
         JButton graficiStudenti = new JButton("STUDENTI");
-        graficiStudenti.setFont(TitleFont.getFont((float) width/68));
+        graficiStudenti.setFont(CustomFont.getFont((float) width/68));
         graficiStudenti.setBorder(new EtchedBorder());
         graficiStudenti.setBackground(Color.WHITE);
         graficiStudenti.setForeground(Color.DARK_GRAY);

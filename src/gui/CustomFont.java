@@ -4,7 +4,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class TitleFont {
+public class CustomFont {
     public static Font getFont(float size){
         Font font = null;
         try {
