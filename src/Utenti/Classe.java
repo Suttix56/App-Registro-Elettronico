@@ -39,4 +39,9 @@ public class Classe {
         }
         return media/studenti.size();
     }
+
+    @Override
+    public String toString(){
+        return String.valueOf(anno) + sezione + " " + indirizzo;
+    }
 }

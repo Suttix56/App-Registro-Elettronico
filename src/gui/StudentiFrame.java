@@ -5,8 +5,13 @@ import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.util.Objects;
 
+import Controllore.Controllore;
+
 public class StudentiFrame extends JFrame {
-    public StudentiFrame(){
+    private Controllore controllore;
+    public StudentiFrame(Controllore controllore){
+        this.controllore = controllore;
+
         int width, height, b_height, b_width;
 
         setExtendedState(MAXIMIZED_BOTH);
@@ -47,7 +52,7 @@ public class StudentiFrame extends JFrame {
         homePanel.add(homeButton);
 
         homeButton.addActionListener(e->{
-            new HomeFrame();
+            new HomeFrame(controllore);
             dispose();
         });
         //HOME--------------------------------------------------------
@@ -75,7 +80,7 @@ public class StudentiFrame extends JFrame {
         crea.setForeground(Color.DARK_GRAY);
 
         crea.addActionListener(e -> {
-            new CreaStudenti();
+            new CreaStudenti(controllore);
             //dispose();
         });
 

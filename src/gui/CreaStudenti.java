@@ -1,18 +1,22 @@
 package gui;
 
+import Utenti.Classe;
 import Utenti.Studente;
+import Controllore.Controllore;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
 
 public class CreaStudenti extends JFrame {
-    public CreaStudenti() {
+    private Controllore controllore;
+    public CreaStudenti(Controllore controllore) {
+        this.controllore = controllore;
+
         int width, height, b_height, b_width;
 
         setExtendedState(MAXIMIZED_BOTH);
@@ -53,7 +57,7 @@ public class CreaStudenti extends JFrame {
         homePanel.add(homeButton);
 
         homeButton.addActionListener(e->{
-            new HomeFrame();
+            new HomeFrame(controllore);
             dispose();
         });
         //HOME--------------------------------------------------------
@@ -106,7 +110,7 @@ public class CreaStudenti extends JFrame {
         cognomePanel.add(Box.createHorizontalStrut(10));
         cognomePanel.add(cognomeField);
 
-        // Modifica per la data di nascita con 3 JComboBox (giorni, mesi, anni)
+        //ANNO DI NASCITA------------------------------------
         JPanel dataNascitaPanel = new JPanel();
         dataNascitaPanel.setLayout(new BoxLayout(dataNascitaPanel, BoxLayout.X_AXIS));
         dataNascitaPanel.setOpaque(false);
@@ -120,14 +124,14 @@ public class CreaStudenti extends JFrame {
             giornoCombo.addItem(String.format("%02d", i));
         }
 
-        // ComboBox per i mesi (nomi dei mesi)
+        // ComboBox per i mesi
         JComboBox<String> meseCombo = new JComboBox<>();
         String[] mesi = {"Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
         for (String mese : mesi) {
             meseCombo.addItem(mese);
         }
 
-        // ComboBox per gli anni (dal 1900 al 2024)
+        // ComboBox per gli anni
         JComboBox<String> annoCombo = new JComboBox<>();
         for (int i = 1900; i <= 2024; i++) {
             annoCombo.addItem(String.valueOf(i));
@@ -202,12 +206,20 @@ public class CreaStudenti extends JFrame {
         classLabel.setFont(new Font("Arial", Font.BOLD, height/35));
         classLabel.setForeground(Color.WHITE);
 
-        JTextField classField = new JTextField();
-        classField.setPreferredSize(new Dimension(200,15));
+        JComboBox<String> classCombo = new JComboBox<>();
+        //esempio
+        ArrayList<Classe> classi = new ArrayList<>();
+        classi.add(new Classe(5,"inf", 'B'));
+        classi.add(new Classe(5,"inf", 'A'));
+        classi.add(new Classe(3,"tur", 'A'));
+
+        for (Classe c : classi) {
+            classCombo.addItem(c.toString());
+        }
 
         classPanel.add(classLabel);
         classPanel.add(Box.createHorizontalStrut(10));
-        classPanel.add(classField);
+        classPanel.add(classCombo);
 
         //aggiunta al panel
         formPanel2.add(cfPanel);
@@ -232,10 +244,10 @@ public class CreaStudenti extends JFrame {
             if(nomeField.getText().isEmpty() || cognomeField.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null,"Inserisci nome e cognome");
             }
-            else if(classField.getText().isEmpty()){
+            else if(classCombo.getSelectedItem()==null){
                 JOptionPane.showMessageDialog(null,"Inserire la classe");
             }
-            else if(!checkCodiceFiscale(cfField.getText().trim())){
+            else if(!controllore.checkCodiceFiscale(cfField.getText().trim())){
                 JOptionPane.showMessageDialog(null,"Codice Fiscale invalido");
             }
             else{
@@ -255,25 +267,5 @@ public class CreaStudenti extends JFrame {
         revalidate();
         repaint();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-
-
-    public boolean checkCodiceFiscale(String cf){
-        //lunghezza di 16
-        if(cf.length()!=16) return false;
-
-        //NUMERI
-        Integer[] in = new Integer[]{6,7,9,10,12,13,14};
-        for (Integer i: in) {
-            if(!Character.isDigit(cf.charAt(i))) return false;
-        }
-
-        //CARATTERI
-        in = new Integer[]{0,1,2,3,4,5,8,11,15};
-        for (Integer i: in) {
-            if(Character.isDigit(cf.charAt(i))) return false;
-        }
-
-        return true;
     }
 }

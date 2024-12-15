@@ -5,8 +5,12 @@ import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.util.Objects;
 
+import Controllore.Controllore;
+
 public class GenitoriFrame extends JFrame {
-    public GenitoriFrame(){
+    private Controllore controllore;
+    public GenitoriFrame(Controllore controllore){
+        this.controllore = controllore;
         int width, height, b_height, b_width;
 
         setExtendedState(MAXIMIZED_BOTH);
@@ -47,7 +51,7 @@ public class GenitoriFrame extends JFrame {
         homePanel.add(homeButton);
 
         homeButton.addActionListener(e->{
-            new HomeFrame();
+            new HomeFrame(controllore);
             dispose();
         });
         //HOME--------------------------------------------------------

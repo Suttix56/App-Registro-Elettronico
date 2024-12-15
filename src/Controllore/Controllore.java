@@ -64,7 +64,23 @@ public class Controllore {
     }
     // --- FINE REGISTRAZIONE --- //
     
-    public void login(Credenziali credenziali) {
+    //CODICE FISCALE------------------------------
+    public boolean checkCodiceFiscale(String cf){
+        //lunghezza di 16
+        if(cf.length()!=16) return false;
 
+        //NUMERI
+        Integer[] in = new Integer[]{6,7,9,10,12,13,14};
+        for (Integer i: in) {
+            if(!Character.isDigit(cf.charAt(i))) return false;
+        }
+
+        //CARATTERI
+        in = new Integer[]{0,1,2,3,4,5,8,11,15};
+        for (Integer i: in) {
+            if(Character.isDigit(cf.charAt(i))) return false;
+        }
+
+        return true;
     }
 }
